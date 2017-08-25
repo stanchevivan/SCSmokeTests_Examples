@@ -153,21 +153,27 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.DescriptionAttribute("Create new area locally")]
         [NUnit.Framework.CategoryAttribute("TC23022")]
         [NUnit.Framework.CategoryAttribute("Smoke")]
-        public virtual void CreateNewAreaLocally()
+        [NUnit.Framework.TestCaseAttribute("Automation test created area", "Covent Garden", new string[0])]
+        public virtual void CreateNewAreaLocally(string newAreaName, string locationName, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create new area locally", new string[] {
-                        "TC23022",
-                        "Smoke"});
+            string[] @__tags = new string[] {
+                    "TC23022",
+                    "Smoke"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create new area locally", @__tags);
 #line 33
 this.ScenarioSetup(scenarioInfo);
 #line 34
     testRunner.Given("Stock Count app is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 35
-    testRunner.When("I Select location \"Covent Garden\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When(string.Format("I Select location \"{0}\"", locationName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 36
-    testRunner.And("a new area \"Automation created area\" is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And(string.Format("a new area \"{0}\" is created", newAreaName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 37
-    testRunner.Then("\"Automation created area\" is present on the area list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then(string.Format("\"{0}\" is present on the area list", newAreaName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -175,18 +181,22 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("User is redirected to the main page when location is selected")]
         [NUnit.Framework.CategoryAttribute("TC23021")]
+        [NUnit.Framework.CategoryAttribute("Smoke")]
         public virtual void UserIsRedirectedToTheMainPageWhenLocationIsSelected()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User is redirected to the main page when location is selected", new string[] {
-                        "TC23021"});
-#line 40
+                        "TC23021",
+                        "Smoke"});
+#line 44
 this.ScenarioSetup(scenarioInfo);
-#line 41
+#line 45
     testRunner.Given("Stock Count app is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 42
+#line 46
     testRunner.And("the user has multiple locations", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 43
-    testRunner.When("a location is selected, the main page with all areas is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 47
+    testRunner.When("I Select location \"Covent Garden\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 48
+    testRunner.Then("they are redirected to the Main screen", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

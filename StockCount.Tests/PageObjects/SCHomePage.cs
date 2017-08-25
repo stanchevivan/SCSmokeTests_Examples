@@ -11,7 +11,7 @@ namespace TestAutomationStockCount.StockCount.Tests.PageObjects
     public class SCHomePage : BasePage
     {
 		#region Constructor
-        SCHomePage(IWebDriver webDriver) : base(webDriver)
+        public SCHomePage(IWebDriver webDriver) : base(webDriver)
         {
 			Driver.AsMobile().SwitchToWebViewContext();
 		}
@@ -46,27 +46,35 @@ namespace TestAutomationStockCount.StockCount.Tests.PageObjects
             return LBL_StockPeriod.Displayed;
         }
 
-        public void UseNewAreaButton()
+        public SCHomePage UseNewAreaButton()
         {
             BTN_NewArea.Click();
             //Driver.WaitIsClickable(BTN_ConfirmNewAreaName);
+
+            return this;
         }
 
-        public void ConfirmNewAreaName()
+        public SCHomePage ConfirmNewAreaName()
         {
             BTN_ConfirmNewAreaName.Click();
+
+            return this;
         }
 
-        public void EnterNewAreaName(string name)
+        public SCHomePage EnterNewAreaName(string name)
         {
             FLD_NewAreaName.ClearAndSendKeys(name);
+
+            return this;
         }
 
-        public void CreateNewArea(string name)
+        public SCHomePage CreateNewArea(string name)
         {
             UseNewAreaButton();
             EnterNewAreaName(name);
             ConfirmNewAreaName();
+
+            return this;
         }
         #endregion
     }

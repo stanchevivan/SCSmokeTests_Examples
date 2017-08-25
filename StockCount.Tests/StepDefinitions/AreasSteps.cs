@@ -8,15 +8,15 @@ namespace StockCount.Tests
     [Binding]
     public class AreasSteps
     {
-		private FourthLoginPage FourthLoginPage;
+        private FourthLoginPage FourthLoginPage;
 		private FourthHomePage FourthHomePage;
 		private SCLocationPage SCLocationPage;
 		private SCHomePage SCHomePage;
         private ProductsPage ProductsPage;
 
-		public AreasSteps(FourthLoginPage login, FourthHomePage fourthHomePage, SCLocationPage scLocationPage, SCHomePage scHomePage, ProductsPage productsPage)
+		public AreasSteps(FourthLoginPage fourthLoginPage, FourthHomePage fourthHomePage, SCLocationPage scLocationPage, SCHomePage scHomePage, ProductsPage productsPage)
 		{
-			FourthLoginPage = login;
+            FourthLoginPage = fourthLoginPage;
 			FourthHomePage = fourthHomePage;
 			SCLocationPage = scLocationPage;
 			SCHomePage = scHomePage;
@@ -109,6 +109,19 @@ namespace StockCount.Tests
 			};
 
 			Assert.That(SCHomePage.AreaList, Is.EquivalentTo(expectedAreas));
+		}
+
+		[Given(@"the user has multiple locations")]
+		public void GivenTheUserHasMultipleLocations()
+		{
+            Assert.That(SCLocationPage.GetNumberOfLocations(), Is.GreaterThan(1));
+		}
+
+		[When(@"a location is selected, the main page with all areas is opened")]
+
+		public void WhenALocationIsSelectedTheMainPageWithAllAreasIsOpened()
+		{
+			ScenarioContext.Current.Pending();
 		}
     }
 }

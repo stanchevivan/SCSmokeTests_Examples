@@ -11,9 +11,8 @@ namespace TestAutomationStockCount.StockCount.Tests.PageObjects
     public class SCLocationPage : BasePage
     {
 		#region Constructor
-        SCLocationPage(IWebDriver webDriver) : base(webDriver)
+        public SCLocationPage(IWebDriver webDriver) : base(webDriver)
         {
-			
 		}
 		#endregion
 
@@ -32,33 +31,45 @@ namespace TestAutomationStockCount.StockCount.Tests.PageObjects
 		#endregion
 
 		#region Methods
-        public void SelectLocation(string location)
+        public SCLocationPage SelectLocation(string location)
         {
 			Driver.WaitIsClickable(DDL_Location);
 			DDL_Location.Click();
 
             Driver.WaitIsClickable(Panel_LocationList);
+
             LST_Locations.First(x => x.Text == location).Click();
             Driver.WaitElementToDisappear(Panel_LocationList);
+
+            return this;
         }
 
-        public void Confirm()
+        public SCHomePage Confirm()
         {
             BTN_Confirm.Click();
             if(LoadingScreen.Exist())
             {
                 Driver.WaitElementToDisappear(LoadingScreen);
             }
+
+            return new SCHomePage(Driver);
         }
 
-        public void ChooseLocation(string location)
+        public SCHomePage ChooseLocation(string location)
         {
             SelectLocation(location);
             Confirm();
+
+            return new SCHomePage(Driver);
         }
 
-        private int GetNumberOfLocations()
+        public int GetNumberOfLocations()
         {
+            DDL_Location.Click();
+            Driver.WaitIsClickable(Panel_LocationList);
+            Panel_LocationList.Click();
+            Driver.WaitElementToDisappear(Panel_LocationList);
+
             return LST_Locations.Count;
         }
         #endregion

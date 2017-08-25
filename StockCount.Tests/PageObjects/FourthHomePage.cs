@@ -10,7 +10,7 @@ namespace TestAutomationStockCount.StockCount.Tests.PageObjects
     public class FourthHomePage : BasePage
     {
 		#region Constructor
-        FourthHomePage(IWebDriver webDriver) : base(webDriver)
+        public FourthHomePage(IWebDriver webDriver) : base(webDriver)
         {
 			Driver.AsMobile().SwitchToWebViewContext();
 		}
@@ -28,11 +28,13 @@ namespace TestAutomationStockCount.StockCount.Tests.PageObjects
             Driver.SwitchTo().Window(Driver.WindowHandles.Last());
 		}
 
-        public void OpenStockCount()
+        public SCLocationPage OpenStockCount()
         {
             Driver.WaitElementToExists(LNK_StockCount);
             LNK_StockCount.Click();
             SwitchToTab();
+
+            return new SCLocationPage(Driver);
         }
         #endregion
     }

@@ -29,19 +29,23 @@ namespace TestAutomationStockCount.StockCount.Tests.PageObjects
         #endregion
 
         #region Methods
-        public void OpenLoginPage()
+        public FourthLoginPage OpenLoginPage()
         {
             if (!Driver.IsMobile())
                 Driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["WebSite.Url"]);
             WaitPageToLoad();
+
+            return new FourthLoginPage(Driver);
         }
 
-        public void PerformLogin()
+        public FourthHomePage PerformLogin()
         {
             UserName.ClearAndSendKeys(ConfigurationManager.AppSettings["User"]);
             Password.ClearAndSendKeys(ConfigurationManager.AppSettings["Password"]);
             SignIn.Click();
             Driver.WaitElementToDisappear(Password);
+
+            return new FourthHomePage(Driver);
         }
 
         public void WaitPageToLoad()

@@ -30,14 +30,19 @@ Scenario: Home button navigation
     Then they are redirected to the Main screen
 
 @TC23022 @Smoke
-Scenario: Create new area locally
+Scenario Outline: Create new area locally
     Given Stock Count app is opened
-    When I Select location "Covent Garden"
-    And a new area "Automation created area" is created
-    Then "Automation created area" is present on the area list
+    When I Select location "<locationName>"
+    And a new area "<newAreaName>" is created
+    Then "<newAreaName>" is present on the area list
 
-@TC23021
+Examples:
+    | newAreaName                  | locationName  |
+    | Automation test created area | Covent Garden |
+
+@TC23021 @Smoke
 Scenario: User is redirected to the main page when location is selected
     Given Stock Count app is opened
     And the user has multiple locations
-    When a location is selected, the main page with all areas is opened
+    When I Select location "Covent Garden"
+    Then they are redirected to the Main screen

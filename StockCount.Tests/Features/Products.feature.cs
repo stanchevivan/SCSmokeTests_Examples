@@ -68,8 +68,7 @@ namespace StockCount.Tests.Features
         [NUnit.Framework.CategoryAttribute("TC23625")]
         public virtual void VerifyTheListOfProducts()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify the list of products", new string[]
-                {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify the list of products", new string[] {
                         "TC23625"});
 #line 5
 this.ScenarioSetup(scenarioInfo);
@@ -95,9 +94,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 12
     testRunner.Given("Stock Count app is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 13
-    testRunner.When("I Select location \"Covent Garden\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I Select location \"11 test\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
-    testRunner.And("user enters area \"Bar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("user enters area \"Kitchen\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 15
     testRunner.Then("the correct quantity for a product is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -110,8 +109,7 @@ this.ScenarioSetup(scenarioInfo);
         [NUnit.Framework.CategoryAttribute("Smoke")]
         public virtual void ProductsUOMDisplay()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Products & UOM display", new string[]
-                {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Products & UOM display", new string[] {
                         "TC22611",
                         "Smoke"});
 #line 18
@@ -123,9 +121,11 @@ this.ScenarioSetup(scenarioInfo);
 #line 21
     testRunner.And("they navigate to a Stock list screen for area \"Kitchen\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 22
-    testRunner.Then("they are presented with all the products returned from the API for the users current location", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("they are presented with all the products returned from the API for the users curr" +
+                    "ent location", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 23
-    testRunner.And("underneath every product there is a list of all UOMs returned from the API for the specific product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("underneath every product there is a list of all UOMs returned from the API for th" +
+                    "e specific product", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

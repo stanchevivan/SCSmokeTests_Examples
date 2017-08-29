@@ -2,7 +2,7 @@
 using System.Linq;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
-using TestAutomationStockCount.StockCount.Tests.PageObjects;
+using TestAutomationStockCount.StockCount.Tests;
 
 namespace StockCount.Tests
 {
@@ -41,7 +41,7 @@ namespace StockCount.Tests
 				"Cheese: Taleggio",
 				"Red Bull",
 			};
-			var actualProducts = ProductsPage.Products.Select(x => x.Description).ToList();
+			var actualProducts = ProductsPage.Products.Select(x => x.Name).ToList();
 
 			Assert.That(expectedProducts, Is.EqualTo(actualProducts));
 		}
@@ -57,7 +57,7 @@ namespace StockCount.Tests
 				"1KG",
 				"1EA",
 			};
-            var actualProducts = ProductsPage.Products.Select(x => x.Unit).ToList();
+            var actualProducts = ProductsPage.Products.Select(x => x.UOM).ToList();
 
 			Assert.That(expectedUOMs, Is.EqualTo(actualProducts));
 		}
@@ -78,7 +78,7 @@ namespace StockCount.Tests
 				"Cheese: Taleggio",
 				"Red Bull",
 			};
-			var actualProducts = ProductsPage.Products.Select(x => x.Description).ToList();
+			var actualProducts = ProductsPage.Products.Select(x => x.Name).ToList();
 
 			Assert.That(expectedProducts, Is.EqualTo(actualProducts));
 		}
@@ -88,7 +88,7 @@ namespace StockCount.Tests
 		{
 			ProductsPage.Products[0].SetQuanitity(25);
 			ProductsPage.ClickHomeIcon();
-			SCHomePage.OpenArea("Bar");
+			SCHomePage.OpenArea("Kitchen");
 			ProductsPage.Out_ProductDetails(ProductsPage.Products[0]);
 		}
     }

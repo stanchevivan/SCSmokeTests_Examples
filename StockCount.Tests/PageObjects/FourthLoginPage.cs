@@ -5,8 +5,7 @@ using Fourth.Automation.Framework.Extension;
 using Fourth.Automation.Framework.Page;
 using Fourth.Automation.Framework.Mobile;
 
-
-namespace TestAutomationStockCount.StockCount.Tests.PageObjects
+namespace TestAutomationStockCount.StockCount.Tests
 {
     public class FourthLoginPage : BasePage
     {

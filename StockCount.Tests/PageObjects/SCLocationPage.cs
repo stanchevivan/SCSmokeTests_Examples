@@ -5,8 +5,7 @@ using Fourth.Automation.Framework.Page;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
-
-namespace TestAutomationStockCount.StockCount.Tests.PageObjects
+namespace TestAutomationStockCount.StockCount.Tests
 {
     public class SCLocationPage : BasePage
     {
@@ -37,6 +36,9 @@ namespace TestAutomationStockCount.StockCount.Tests.PageObjects
 			DDL_Location.Click();
 
             Driver.WaitIsClickable(Panel_LocationList);
+
+            // Need custom wait for this
+            //// Driver.JavaScript().ExecuteJavaScript(string.Format("return $('#{0}').is(':animated')", Panel_LocationList.GetAttribute("id")));
 
             LST_Locations.First(x => x.Text == location).Click();
             Driver.WaitElementToDisappear(Panel_LocationList);

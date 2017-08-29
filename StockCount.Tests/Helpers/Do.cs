@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace StockCount.Tests.CustomClasses
+namespace StockCount.Tests
 {
     public static class Do
     {

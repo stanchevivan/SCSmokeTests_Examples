@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using OpenQA.Selenium;
+﻿using System.Net;
 
-namespace StockCount.Tests.CustomClasses
+namespace StockCount.Tests
 {
     public static class TestHelper
     {

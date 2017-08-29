@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
-using TestAutomationStockCount.StockCount.Tests.PageObjects;
+using TestAutomationStockCount.StockCount.Tests;
 
 namespace StockCount.Tests
 {
@@ -45,7 +45,7 @@ namespace StockCount.Tests
         [Then(@"There is an area with name ""(.*)""")]
         public void ThenThereIsAnAreaWithName(string areaName)
         {
-            Assert.That(SCHomePage.AreaList, Has.Member(areaName));
+            Assert.That(SCHomePage.AreaNamesList, Has.Member(areaName));
         }
 
 		[When(@"a new area ""(.*)"" is created")]
@@ -58,7 +58,7 @@ namespace StockCount.Tests
 		[Then(@"""(.*)"" is present on the area list")]
 		public void ThenIsPresentOnTheAreaList(string areaName)
 		{
-			Assert.That(SCHomePage.AreaList, Has.Member(areaName));
+			Assert.That(SCHomePage.AreaNamesList, Has.Member(areaName));
 		}
 
 		[Given(@"the user is on a screen containing a Home button")]
@@ -108,7 +108,7 @@ namespace StockCount.Tests
 				"Basement",
 			};
 
-			Assert.That(SCHomePage.AreaList, Is.EquivalentTo(expectedAreas));
+			Assert.That(SCHomePage.AreaNamesList, Is.EquivalentTo(expectedAreas));
 		}
 
 		[Given(@"the user has multiple locations")]
@@ -122,6 +122,39 @@ namespace StockCount.Tests
 		public void WhenALocationIsSelectedTheMainPageWithAllAreasIsOpened()
 		{
 			ScenarioContext.Current.Pending();
+		}
+
+		[Given(@"the Stock Count app is open")]
+		public void GivenTheStockCountAppIsOpen()
+		{
+			FourthLoginPage.OpenLoginPage();
+			FourthLoginPage.PerformLogin();
+			FourthHomePage.OpenStockCount();
+		}
+
+		[When(@"Location ""(.*)"" is selected")]
+		public void WhenLocationIsSelected(string location)
+		{
+			SCLocationPage.ChooseLocation(location);
+		}
+
+		[When(@"Area ""(.*)"" is renamed to ""(.*)""")]
+		public void WhenAreaIsRenamedTo(string oldName, string newName)
+		{
+            Assert.That(oldName, Is.Not.EqualTo(newName));
+
+            // Adding 1 for the RenameArea method
+            int areaIndex = SCHomePage.AreaNamesList.FindIndex(x => x == oldName) + 1;
+
+            ScenarioContext.Current.Add("indexOfArea", areaIndex);
+
+            SCHomePage.RenameArea(areaIndex, newName);
+		}
+
+		[Then(@"the name is changed to ""(.*)"" on the local device")]
+		public void ThenTheNameIsChangedToOnTheLocalDevice(string expectedName)
+		{
+            Assert.That(SCHomePage.AreaNamesList[ScenarioContext.Current.Get<int>("indexOfArea") - 1], Is.EqualTo(expectedName));
 		}
     }
 }

@@ -2,7 +2,7 @@
 using System.Linq;
 using OpenQA.Selenium;
 
-namespace StockCount.Tests.CustomClasses
+namespace StockCount.Tests
 {
     public static class Get
     {
@@ -23,7 +23,16 @@ namespace StockCount.Tests.CustomClasses
 
         public static bool ElementPresent(IWebElement element)
         {
-            return string.IsNullOrEmpty(element.TagName); 
+            try
+            {
+                var t = element.TagName;
+			}
+            catch (System.Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public static bool ElementDisplayed(IWebElement element)

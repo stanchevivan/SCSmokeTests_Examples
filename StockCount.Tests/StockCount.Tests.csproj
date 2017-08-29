@@ -161,17 +161,18 @@
     </Compile>
     <Compile Include="CustomClasses\Product.cs" />
     <Compile Include="PageObjects\ProductsPage.cs" />
-    <Compile Include="CustomClasses\TestHelper.cs" />
     <Compile Include="StepDefinitions\AreasSteps.cs" />
     <Compile Include="StepDefinitions\ProductsSteps.cs" />
-    <Compile Include="CustomClasses\Get.cs" />
-    <Compile Include="CustomClasses\Do.cs" />
+    <Compile Include="Helpers\Do.cs" />
+    <Compile Include="Helpers\Get.cs" />
+    <Compile Include="Helpers\TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomClasses\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

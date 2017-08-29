@@ -46,3 +46,14 @@ Scenario: User is redirected to the main page when location is selected
     And the user has multiple locations
     When I Select location "Covent Garden"
     Then they are redirected to the Main screen
+
+@TC24259 @Smoke
+Scenario Outline: Rename area
+    Given the Stock Count app is open
+    When Location "<location>" is selected
+    When Area "<oldAreaName>" is renamed to "<newAreaName>"
+    Then the name is changed to "<newAreaName>" on the local device
+
+Examples:
+    | location      | oldAreaName | newAreaName             |
+    | Covent Garden | Kitchen     | Automation renamed area |

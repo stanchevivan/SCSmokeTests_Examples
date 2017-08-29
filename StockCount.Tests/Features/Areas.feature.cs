@@ -200,6 +200,35 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Rename area")]
+        [NUnit.Framework.CategoryAttribute("TC24259")]
+        [NUnit.Framework.CategoryAttribute("Smoke")]
+        [NUnit.Framework.TestCaseAttribute("Covent Garden", "Kitchen", "Automation renamed area", new string[0])]
+        public virtual void RenameArea(string location, string oldAreaName, string newAreaName, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "TC24259",
+                    "Smoke"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Rename area", @__tags);
+#line 51
+this.ScenarioSetup(scenarioInfo);
+#line 52
+    testRunner.Given("the Stock Count app is open", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 53
+    testRunner.When(string.Format("Location \"{0}\" is selected", location), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 54
+    testRunner.When(string.Format("Area \"{0}\" is renamed to \"{1}\"", oldAreaName, newAreaName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 55
+    testRunner.Then(string.Format("the name is changed to \"{0}\" on the local device", newAreaName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

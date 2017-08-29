@@ -10,8 +10,8 @@ Scenario: Verify the list of products
 
 Scenario: Verify quantity of product
     Given Stock Count app is opened
-    When I Select location "Covent Garden"
-    And user enters area "Bar"
+    When I Select location "11 test"
+    And user enters area "Kitchen"
     Then the correct quantity for a product is displayed
 
 @TC22611 @Smoke
